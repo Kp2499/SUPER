@@ -45,6 +45,7 @@
 namespace ros_interface {
     using namespace geometry_utils;
     using namespace color_text;
+    using namespace std;
 
     using MarkerArrayPubPtr = rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr;
     using MarkerPubPtr = rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr;
@@ -313,7 +314,7 @@ namespace ros_interface {
             const auto &have_seed_line = poly.HaveSeedLine();
             const auto &seed_line = poly.seed_line;
             auto sim_clock = std::make_shared<rclcpp::Clock>(RCL_ROS_TIME);
-            if (isnan(planes.sum())) {
+            if (std::isnan(planes.sum())) {
                 printf(" -- [Poly] ERROR, try to visualize polytope with NaN, force return.\n");
                 return;
             }
@@ -342,7 +343,7 @@ namespace ros_interface {
             mesh.leftCols(oldTris.cols()) = oldTris;
             mesh.rightCols(curTris.cols()) = curTris;
 
-            if (isnan(mesh.sum())) {
+            if (std::isnan(mesh.sum())) {
                 printf(" -- [WARN] Trying to publish ill polytope.\n");
                 return;
             }
