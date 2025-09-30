@@ -45,6 +45,7 @@
 namespace ros_interface {
     using namespace geometry_utils;
     using namespace color_text;
+    using namespace std;
 
     using MarkerArrayPubPtr = rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr;
     using MarkerPubPtr = rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr;
